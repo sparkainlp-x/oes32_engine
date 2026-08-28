@@ -32,8 +32,8 @@ class EngineTests(unittest.TestCase):
     def test_even_and_odd_symmetry_convention(self):
         x = [0] * 32
         for i in range(16):
-            x[i] = 1 if i % 2 == 0 else -1
-            x[i + 16] = x[i]
+            x[i] = 1
+            x[i + 16] = 1 if i % 2 == 0 else -1
         self.assertEqual(symmetry_residual(x, 0), 0)
         self.assertEqual(symmetry_residual(x, 1), 0)
 

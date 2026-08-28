@@ -1,5 +1,8 @@
 # OES-32 Engine
 
+**Author:** Jean-François Brisson  
+**Organization:** Spark AI NLP
+
 A small, deterministic Python reference implementation of symbolic telemetry triage and fault-containment equations for a 32-element state vector. This project is a **software specification and test harness**, not certified hardware-control software and must not be connected directly to safety-critical hardware without independent verification, validation, and engineering review.
 
 ## Symbolic specification
