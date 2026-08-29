@@ -1,5 +1,7 @@
 # OES-32 Engine
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 **Author:** Jean-François Brisson  
 **Organization:** Spark AI NLP
 
@@ -50,3 +52,7 @@ assert result.safe
 ```
 
 Run tests with `python3 -m unittest discover -v`.
+
+## License
+
+This project is released under the [MIT License](LICENSE). The license applies to the repository contents unless a file or accompanying notice states otherwise.

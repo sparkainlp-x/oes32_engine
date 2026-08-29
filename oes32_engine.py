@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Jean-François Brisson, Spark AI NLP
+
 """Deterministic OES-32 symbolic telemetry triage reference implementation."""
 from __future__ import annotations
 from dataclasses import dataclass

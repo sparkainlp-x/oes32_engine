@@ -253,6 +253,10 @@ Before any production or safety-related use, the owner should decide whether the
 
 The repository revision, Python version, threshold values, `antisymmetric_odd` setting, input ordering, reference-vector provenance, and test command should be recorded for every qualification run. Changes to equations, index mapping, threshold semantics, or result fields require a specification revision and regression-test update.
 
+## 15. License and attribution
+
+This specification and the accompanying repository implementation are released under the [MIT License](LICENSE). The canonical license text is maintained in the repository-root `LICENSE` file. The project is authored by Jean-François Brisson for Spark AI NLP. The license badge, README statement, source-file SPDX notices, this specification, and the repository-root license are intended to remain consistent.
+
 ## References
 
 [1]: https://github.com/sparkainlp-x/oes32_engine "OES-32 Engine repository"
