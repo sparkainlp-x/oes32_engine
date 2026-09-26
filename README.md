@@ -82,3 +82,11 @@ Run tests with `python3 -m unittest discover -v`.
 
 All inputs in the tests are SYNTHETIC. This is research software: not hardware, field, or medical software, and not certified control software.
 
+
+## Technical specification
+
+[OES32_Technical_Specification.md](OES32_Technical_Specification.md) (PDF: [OES32_Technical_Specification.pdf](OES32_Technical_Specification.pdf)) documents the data contracts, equations, threshold semantics, validation rules, and traceability for `oes32_engine.py`. It is a software specification, not a certification artifact. Its thresholds are Profile A sidecar values under ADR-001.
+
+## License
+
+This project is released under the [MIT License](LICENSE).
