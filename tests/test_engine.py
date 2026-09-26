@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Jean-François Brisson, Spark AI NLP
+
 import unittest
 from oes32_engine import evaluate, fold8_residual, residual, symmetry_residual
 
