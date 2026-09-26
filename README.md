@@ -1,26 +1,25 @@
 # OES-32 Engine
 
-> **Profile A sidecar.** The normative residual definition is [oes32-residual@b77b612](https://github.com/sparkainlp-x/oes32-residual/tree/b77b61254f15778c6ae221843dceac7a8571158e) (ADR-001). This repo's thresholds and FOLD8/symmetry definitions are Profile A extensions and are not normative.
+Profile A sidecar to [oes32-residual](https://github.com/sparkainlp-x/oes32-residual): a deterministic Python telemetry-triage harness (residual latch, EVEN/ODD symmetry, FOLD8 continuity) for 32-element vectors.
 
-**Author:** Jean-François Brisson  
-**Organization:** Spark AI NLP
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests](https://github.com/sparkainlp-x/oes32_engine/actions/workflows/ci.yml/badge.svg)](https://github.com/sparkainlp-x/oes32_engine/actions/workflows/ci.yml)
+[![Status: research prototype](https://img.shields.io/badge/status-research%20prototype-orange.svg)](#what-it-is-not)
+[![ADR-001: Profile A sidecar](https://img.shields.io/badge/ADR--001-Profile%20A%20sidecar-blue.svg)](#relationship-to-adr-001)
 
-A small, deterministic Python reference implementation of symbolic telemetry triage and fault-containment equations for a 32-element state vector. This project is a **software specification and test harness**, not certified hardware-control software and must not be connected directly to safety-critical hardware without independent verification, validation, and engineering review.
+**Author:** Jean-François Brisson · **Organization:** Spark AI NLP
 
-## Relation to oes32-residual (ADR-001 · Profile A)
+## What it is
 
-The normative residual aggregate **R** is defined by [`oes32-residual`](https://github.com/sparkainlp-x/oes32-residual) (pin: `b77b61254f15778c6ae221843dceac7a8571158e` until superseded): maximum absolute component residual on length-32 vectors, fail-closed on invalid input.
+- A small, standard-library-only Python module, [`oes32_engine.py`](oes32_engine.py), that evaluates a proposed 32-element state vector against a reference and returns a deterministic `SAFE` / `LATCH` containment decision plus all residuals.
+- A **software specification and test harness**: [OES32_Technical_Specification.md](OES32_Technical_Specification.md) ([PDF](OES32_Technical_Specification.pdf)) documents the data contracts, equations, threshold semantics, validation rules, and traceability.
 
-This engine implements **Profile A sidecars** on top of that residual:
+## What it is NOT
 
-| Check | Role | Default threshold (sidecar) |
-|---|---|---|
-| Residual coherence R | Normative R (must match oes32-residual) | caller / documented τ |
-| Coherence latch | Sidecar | τ_coherence = 0.08 (default in this repo) |
-| EVEN/ODD symmetry | Sidecar | τ_sym (see code) |
-| FOLD8 ring continuity | Sidecar | τ_fold (see code) |
-
-SAFE/LATCH here is a containment profile decision, **not** a physical qubit gate, QPU status, or certified hardware-control result. See [docs/ADR-001-oes32-tau-unification.md](docs/ADR-001-oes32-tau-unification.md).
+- **Not** certified control software, and not a certification artifact. It must not be connected directly to safety-critical hardware without independent verification, validation, and engineering review.
+- **Not** a qubit gate, QPU status, or quantum-hardware result. `SAFE`/`LATCH` is a containment decision on numbers you supply.
+- **Not** hardware, field, or medical software.
+- **Not** the normative OES-32 residual. That is [oes32-residual@b77b612](https://github.com/sparkainlp-x/oes32-residual/tree/b77b61254f15778c6ae221843dceac7a8571158e) (ADR-001).
 
 ## Symbolic specification
 
@@ -57,36 +56,70 @@ The aggregate containment decision is
 \mathrm{LATCH}=\neg\mathrm{SAFE}.
 \]
 
-## Install
+## Quickstart
 
-Requires Python 3.8+ and only the standard library (no third-party dependencies).
+Requires Python 3.8+; standard library only.
 
 ```bash
 git clone https://github.com/sparkainlp-x/oes32_engine.git
 cd oes32_engine
-python3 -m unittest discover -v
+python3 -c "from oes32_engine import evaluate; r = evaluate([0.0] * 32, [0.0] * 32); print(r); assert r.safe"
 ```
 
-## Usage
+Expected output:
+
+```text
+Evaluation(residual=0.0, latch=False, even_symmetry_residual=0.0, odd_symmetry_residual=0.0, fold8_residual=0.0, safe=True)
+```
+
+In Python:
 
 ```python
 from oes32_engine import evaluate
 
-result = evaluate([0.0] * 32, [0.0] * 32)
-assert result.safe
+result = evaluate([0.0] * 32, [0.0] * 32)          # default tau = 0.08
+assert result.safe and not result.latch
 ```
 
-Run tests with `python3 -m unittest discover -v`.
+## Tests
 
-## Evidence status
+Seven unit tests cover zero-state acceptance, max-absolute residual selection, threshold equality (accepted) vs. strict exceedance (latches), FOLD8 wraparound, the EVEN/ODD symmetry convention, and invalid-width rejection.
 
-All inputs in the tests are SYNTHETIC. This is research software: not hardware, field, or medical software, and not certified control software.
+```bash
+python3 -m unittest discover -v      # standard library only
+# or
+python3 -m pip install pytest && python3 -m pytest -q
+```
 
+CI ([`ci.yml`](.github/workflows/ci.yml)) runs `pytest` on Python 3.11 and 3.12 for every push and pull request to `main`.
 
-## Technical specification
+## Evidence tags
 
-[OES32_Technical_Specification.md](OES32_Technical_Specification.md) (PDF: [OES32_Technical_Specification.pdf](OES32_Technical_Specification.pdf)) documents the data contracts, equations, threshold semantics, validation rules, and traceability for `oes32_engine.py`. It is a software specification, not a certification artifact. Its thresholds are Profile A sidecar values under ADR-001.
+| Item | Tag |
+|---|---|
+| Unit-test inputs | **SYNTHETIC** (hand-written vectors) |
+| Default thresholds (τ = 0.08; τ_sym, τ_fold default to τ) | Design parameters of this Profile A sidecar; not derived from measured data |
+| Timing, hardware, or field behaviour | Not claimed (**UNRUN**) |
+
+Tag definitions: [sparkainlp-x/.github](https://github.com/sparkainlp-x/.github#evidence-tags).
+
+## Relationship to ADR-001
+
+The normative residual aggregate **R** is defined by [`oes32-residual`](https://github.com/sparkainlp-x/oes32-residual) (pin `b77b61254f15778c6ae221843dceac7a8571158e` until superseded): the maximum absolute component residual on length-32 vectors, fail-closed on invalid input. This engine computes the same R and adds **Profile A sidecar** checks. The sidecar thresholds and the FOLD8/symmetry definitions are not normative.
+
+| Check | Role | Default threshold (sidecar) |
+|---|---|---|
+| Residual coherence R | Normative R (matches oes32-residual) | caller / documented τ |
+| Coherence latch | Sidecar | τ_coherence = 0.08, strict `>` latches (same fail rule as the normative contract) |
+| EVEN/ODD symmetry | Sidecar | τ_sym (defaults to τ) |
+| FOLD8 ring continuity | Sidecar | τ_fold (defaults to τ) |
+
+Cross-repo definition table: [docs/ADR-001-oes32-tau-unification.md](docs/ADR-001-oes32-tau-unification.md). The OES-512 weighted latch (S = 0.45·Peak + 0.35·RMS + 0.20·MeanAbs, τ = 0.50) is a **TARGET** and is not implemented here.
+
+## Citation
+
+Citation metadata is in [CITATION.cff](CITATION.cff); GitHub shows a "Cite this repository" button.
 
 ## License
 
-This project is released under the [MIT License](LICENSE).
+[MIT](LICENSE). Copyright (c) 2026 Jean-François Brisson, Spark AI NLP.
