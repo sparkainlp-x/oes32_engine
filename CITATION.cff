@@ -10,7 +10,7 @@ authors:
 repository-code: "https://github.com/sparkainlp-x/oes32_engine"
 url: "https://sparkainlpx.xyz"
 license: MIT
-version: "0.1.0"
+version: "0.1.1"
 date-released: "2026-09-26"
 abstract: >-
   Deterministic, standard-library Python reference for OES-32 telemetry triage:
