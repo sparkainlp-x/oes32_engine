@@ -6,6 +6,7 @@ Profile A sidecar to [oes32-residual](https://github.com/sparkainlp-x/oes32-resi
 [![Tests](https://github.com/sparkainlp-x/oes32_engine/actions/workflows/ci.yml/badge.svg)](https://github.com/sparkainlp-x/oes32_engine/actions/workflows/ci.yml)
 [![Status: research prototype](https://img.shields.io/badge/status-research%20prototype-orange.svg)](#what-it-is-not)
 [![ADR-001: Profile A sidecar](https://img.shields.io/badge/ADR--001-Profile%20A%20sidecar-blue.svg)](#relationship-to-adr-001)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22985523.svg)](https://doi.org/10.5281/zenodo.22985523)
 
 **Author:** Jean-François Brisson · **Organization:** Spark AI NLP
 
@@ -117,6 +118,8 @@ The normative residual aggregate **R** is defined by [`oes32-residual`](https://
 Cross-repo definition table: [docs/ADR-001-oes32-tau-unification.md](docs/ADR-001-oes32-tau-unification.md). The OES-512 weighted latch (S = 0.45·Peak + 0.35·RMS + 0.20·MeanAbs, τ = 0.50) is a **TARGET** and is not implemented here.
 
 ## Citation
+
+Archived on Zenodo: concept DOI [10.5281/zenodo.22985523](https://doi.org/10.5281/zenodo.22985523) (all versions; resolves to the latest). The v0.1.1 archive is [10.5281/zenodo.22985524](https://doi.org/10.5281/zenodo.22985524).
 
 Citation metadata is in [CITATION.cff](CITATION.cff); GitHub shows a "Cite this repository" button.
 
