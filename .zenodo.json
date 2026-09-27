@@ -1,0 +1,37 @@
+{
+  "upload_type": "software",
+  "title": "OES-32 Engine: Profile A telemetry-triage sidecar",
+  "description": "<p>Profile A sidecar to oes32-residual: a deterministic, standard-library-only Python telemetry-triage harness (residual latch, EVEN/ODD symmetry, FOLD8 continuity) for 32-element vectors. It evaluates a proposed 32-element state vector against a reference and returns a deterministic <code>SAFE</code> / <code>LATCH</code> containment decision plus all residuals. A technical specification documents the data contracts, equations, threshold semantics, validation rules, and traceability.</p><p><strong>Relationship to ADR-001.</strong> The normative residual R is defined by <a href=\"https://github.com/sparkainlp-x/oes32-residual/tree/b77b61254f15778c6ae221843dceac7a8571158e\">oes32-residual@b77b612</a>. This engine computes the same R and adds Profile A sidecar checks; the sidecar thresholds and the FOLD8/symmetry definitions are not normative. The OES-512 weighted latch is <strong>TARGET</strong> and is not implemented here.</p><p><strong>Evidence tags.</strong> Unit-test inputs: <strong>SYNTHETIC</strong> (hand-written vectors). Default thresholds (τ = 0.08; τ_sym, τ_fold default to τ): design parameters of this sidecar, not derived from measured data. Timing, hardware, or field behaviour: not claimed (<strong>UNRUN</strong>).</p><p><strong>Scope and limits.</strong> Research prototype. Not certified control software and not a certification artifact; it must not be connected directly to safety-critical hardware without independent verification, validation, and engineering review. Not a qubit gate, QPU status, or quantum-hardware result; not hardware, field, or medical software.</p><p>Evidence tags follow <a href=\"https://github.com/sparkainlp-x/.github#evidence-tags\">sparkainlp-x/.github</a> (SYNTHETIC / REPORTED / TARGET / UNRUN).</p>",
+  "creators": [
+    {
+      "name": "Brisson, Jean-François",
+      "affiliation": "Spark AI NLP"
+    }
+  ],
+  "access_right": "open",
+  "license": "MIT",
+  "keywords": [
+    "OES-32",
+    "telemetry triage",
+    "Profile A sidecar",
+    "residual latch",
+    "EVEN/ODD symmetry",
+    "FOLD8 ring continuity",
+    "fault containment",
+    "Python",
+    "reference implementation"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/sparkainlp-x/oes32_engine",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "10.5281/zenodo.22985520",
+      "relation": "isDerivedFrom",
+      "resource_type": "software"
+    }
+  ],
+  "language": "eng"
+}
