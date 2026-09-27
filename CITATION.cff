@@ -10,6 +10,14 @@ authors:
 repository-code: "https://github.com/sparkainlp-x/oes32_engine"
 url: "https://sparkainlpx.xyz"
 license: MIT
+doi: "10.5281/zenodo.22985523"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22985523"
+    description: "Concept DOI (all versions, Zenodo)"
+  - type: doi
+    value: "10.5281/zenodo.22985524"
+    description: "Version DOI for v0.1.1 (Zenodo)"
 version: "0.1.1"
 date-released: "2026-09-26"
 abstract: >-
