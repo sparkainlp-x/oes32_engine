@@ -255,7 +255,7 @@ The repository revision, Python version, threshold values, `antisymmetric_odd` s
 
 ## 15. License and attribution
 
-This specification and the accompanying repository implementation are released under the [MIT License](LICENSE). The canonical license text is maintained in the repository-root `LICENSE` file. The project is authored by Jean-François Brisson for Spark AI NLP. The license badge, README statement, source-file SPDX notices, this specification, and the repository-root license are intended to remain consistent.
+Released under the GNU Affero General Public License v3.0 only (AGPL-3.0-only). A commercial license is available; see COMMERCIAL-LICENSE.md. Versions published before 2026-09-29 were released under the MIT License and remain available under those terms. The canonical license text is maintained in the repository-root `LICENSE` file. The project is authored by Jean-François Brisson for Spark AI NLP. The license badge, README statement, source-file SPDX notices, this specification, and the repository-root license are intended to remain consistent.
 
 ## References
 
