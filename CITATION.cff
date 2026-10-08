@@ -18,8 +18,8 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.22985524"
     description: "Version DOI for v0.1.1 (Zenodo)"
-version: "0.1.1"
-date-released: "2026-09-26"
+version: "0.1.2"
+date-released: "2026-10-08"
 abstract: >-
   Deterministic, standard-library Python reference for OES-32 telemetry triage:
   max-absolute residual with a strict-exceedance latch, EVEN/ODD sector symmetry,
