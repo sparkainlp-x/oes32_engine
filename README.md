@@ -119,7 +119,7 @@ Cross-repo definition table: [docs/ADR-001-oes32-tau-unification.md](docs/ADR-00
 
 ## Citation
 
-Archived on Zenodo: concept DOI [10.5281/zenodo.22985523](https://doi.org/10.5281/zenodo.22985523) (all versions; resolves to the latest). The v0.1.1 archive is [10.5281/zenodo.22985524](https://doi.org/10.5281/zenodo.22985524).
+Archived on Zenodo: concept DOI [10.5281/zenodo.22985523](https://doi.org/10.5281/zenodo.22985523) (all versions; resolves to the latest). The v0.1.2 archive is [10.5281/zenodo.23241621](https://doi.org/10.5281/zenodo.23241621); v0.1.1 is [10.5281/zenodo.22985524](https://doi.org/10.5281/zenodo.22985524).
 
 Citation metadata is in [CITATION.cff](CITATION.cff); GitHub shows a "Cite this repository" button.
 
